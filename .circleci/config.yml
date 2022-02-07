@@ -3,7 +3,10 @@
 # For a detailed guide to building and testing on Android, read the docs:
 # https://circleci.com/docs/2.0/language-android/ for more details.
 version: 2.1
-
+dependencies:
+  override:
+    - chmod +x gradlew
+    - ./gradlew dependencies
 # Orbs are reusable packages of CircleCI configuration that you may share across projects, enabling you to create encapsulated, parameterized commands, jobs, and executors that can be used across multiple projects.
 # See: https://circleci.com/docs/2.0/orb-intro/
 orbs:
@@ -21,6 +24,7 @@ jobs:
 
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+      
     steps:
       # Checkout the code as the first step.
       - checkout
@@ -43,7 +47,7 @@ jobs:
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
+  buildxTGH: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build-and-test
